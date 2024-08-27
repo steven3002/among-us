@@ -84,8 +84,15 @@ cartesi run
 
 
 ## 🕹️ Game Functions
+### 
+Note: The code is based on a frontend CLI, so the inputs are in the format { "method": <methodName>, "request<T>": <T> }. Since the system processes input from the terminal as a string, I have included a double JSON.parse to make it easier for you to copy and paste from your JSON-to-String converter.
 
+Also, Note: The game uses (report) for error handling and notifications of failed computations, while (notice) is used for successful computations. Therefore, when you send an input, watch out for both.
+## 
 ### **Inspect State**
+##
+Note: inspect outputs are all (report)
+##
 ```bash
 .../inspect/<method>
 ```
