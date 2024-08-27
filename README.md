@@ -217,6 +217,13 @@ the following are the methods:...
 
 ```
 
+-`getRole`: get your current role. ie (imposter or crewmate);
+```javascript
+{"request": null}
+
+```
+
+
 - `endVotesAndDiscussion`: End the voting and discussion phase.
 ```javascript
 {"request": null}
