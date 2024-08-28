@@ -121,7 +121,7 @@ the following are the methods:...
 
 - `killPlayer`: Eliminate a player.
 ```javascript
-{"request": String}
+{"request": <String(AccountId)>}
 
 ```
 
@@ -133,13 +133,13 @@ the following are the methods:...
 ```
 
 
-- `sabotageRoom`: Sabotage a room.
+- `sabotageRoom`: Sabotage a room (should be present in that room).
 ```javascript
 {"request": null}
 
 ```
 
-- `doTask`: Perform a task.
+- `doTask`: Perform a task (should be present in that room).
 ```javascript
 {"request": null}
 
@@ -159,7 +159,7 @@ the following are the methods:...
 
 - `vote`: Vote to eject a player.
 ```javascript
-{"request": <String>}
+{"request": <String(AccountID)>}
 
 ```
 
