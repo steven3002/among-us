@@ -49,6 +49,7 @@ class Lobby {
         const game = this.rooms[roomId];
         if (game) {
             game.addPlayer(playerName);
+            notice(`joined game Room ID: ${roomId}`)
             console.log(`joined game Room ID: ${roomId}`)
 
             return game;

@@ -147,6 +147,7 @@ class Game {
         this.assignRoles();
         this.isRunning = true;
         this.gameState = "The game has started!";
+
         notice(this.gameState);
 
         this.players.forEach(player => {
@@ -156,6 +157,14 @@ class Game {
         })
 
     }
+
+    getRole(sender) {
+        const player = this.players.find(p => p.name === sender);
+        console.log(`Role: ${player.role}`);
+        notice(`Role: ${player.role}`);
+
+    }
+
 
 
 
@@ -190,7 +199,7 @@ class Game {
             } else {
                 player.news = (`${this.imposter} is also an imposter`)
             }
-            // console.log(`${player.name} is a ${player.role}.`); //might include this later
+            // console.log(`${player.name} is a ${player.role}.`); //might include this later, 
         });
     }
 
@@ -348,11 +357,7 @@ class Game {
 
                 let d = player.currentRoom.doTask();
 
-                // Ensure d is a valid number
-                if (typeof d !== 'number' || isNaN(d)) {
-                    console.error(`Error: doTask() returned an invalid value: ${d}`);
-                    d = 0; // Set d to 0 if it's not a valid number
-                }
+
 
                 this.completedTasks1 += d;
 
@@ -527,6 +532,7 @@ class Game {
     endEmergencyMeeting() {
         this.isMeetingInProgress = false;
         this.gameState = ("The emergency meeting has ended.");
+        notice(this.gameState)
 
     }
 

@@ -33,6 +33,8 @@ async function report(payload) {
     },
     body: JSON.stringify({ payload: str2hex(data) }),
   });
+
+  console.log
   return;
 }
 
@@ -49,6 +51,7 @@ async function notice(payload) {
     },
     body: JSON.stringify({ payload: str2hex(data) }),
   });
+  console.log(notice_req)
 
   return;
 }
@@ -373,6 +376,15 @@ async function vote(sender, candidate) {
   }
 }
 
+async function getRole(sender, request) {
+  let game = playerState[sender];
+  if (game) {
+    game.getRole(sender);
+  } else {
+    report("create or join a game state");
+  }
+}
+
 async function showTask(sender, request) {
   let game = playerState[sender];
   if (game) {
@@ -588,26 +600,26 @@ async function bugTest(sender, request) {
     console.error("\n\n\n\n\n\n Error in display chat:\n", e);
   }
 
-  // try win by kill 
-  try {
-    moveToRoom(player1, 6);
-    console.log("\n\n\n")
-    moveToRoom(player2, 6);
-    console.log("\n\n\n")
-    moveToRoom(player3, 6);
-    console.log("\n\n\n")
-    moveToRoom(imposter, 6);
-    console.log("\n\n\n")
-    moveToRoom(player4, 6);
-    console.log("\n\n\n")
-    killPlayer(imposter, player2);
-    console.log("\n\n\n")
-    killPlayer(imposter, player3);
-    console.log("\n\n\n")
+  // // try win by kill 
+  // try {
+  //   moveToRoom(player1, 6);
+  //   console.log("\n\n\n")
+  //   moveToRoom(player2, 6);
+  //   console.log("\n\n\n")
+  //   moveToRoom(player3, 6);
+  //   console.log("\n\n\n")
+  //   moveToRoom(imposter, 6);
+  //   console.log("\n\n\n")
+  //   moveToRoom(player4, 6);
+  //   console.log("\n\n\n")
+  //   killPlayer(imposter, player2);
+  //   console.log("\n\n\n")
+  //   killPlayer(imposter, player3);
+  //   console.log("\n\n\n")
 
-  } catch (e) {
-    console.error("\n\n\n\n\n\n Error in display win:\n", e);
-  }
+  // } catch (e) {
+  //   console.error("\n\n\n\n\n\n Error in display win:\n", e);
+  // }
 
   // // try win by task
   // try {
@@ -620,7 +632,6 @@ async function bugTest(sender, request) {
   //   }
   // } catch (e) {
   //   console.error("\n\n\n\n\n\n Error in display win:\n", e);
-
   // }
 
 
@@ -642,36 +653,37 @@ async function bugTest(sender, request) {
 
 
 
-  // const func = [
-  //   "getMynews",
-  //   "getRoomNews",
-  //   "displayChat",
-  //   "showTask",
-  //   "gameEnded",
-  //   "getGameState",
-  //   "getRoomId",
-  //   "seePeopleInRoom",
-  //   "getRoomTaskState"
-  // ];
+  const func = [
+    "getMynews",
+    "getRoomNews",
+    "displayChat",
+    "showTask",
+    "gameEnded",
+    "getGameState",
+    "getRoomId",
+    "seePeopleInRoom",
+    "getRoomTaskState",
+    "getRole"
+  ];
 
-  // for (let i in func) {
-  //   const funcName = func[i];
-  //   const dataFunc = advanceState[funcName];
+  for (let i in func) {
+    const funcName = func[i];
+    const dataFunc = advanceState[funcName];
 
-  //   if (typeof dataFunc === 'function') {
-  //     try {
-  //       dataFunc(player1, 1);
-  //       dataFunc(player2, 1);
-  //       dataFunc(player3, 1);
-  //       dataFunc(imposter, 1);
-  //       dataFunc(player4, 1);
-  //     } catch (error) {
-  //       console.error(`Error executing function ${funcName}:`, error);
-  //     }
-  //   } else {
-  //     console.error(`${funcName} is not a function in advanceState`);
-  //   }
-  // }
+    if (typeof dataFunc === 'function') {
+      try {
+        dataFunc(player1, 1);
+        dataFunc(player2, 1);
+        dataFunc(player3, 1);
+        dataFunc(imposter, 1);
+        dataFunc(player4, 1);
+      } catch (error) {
+        console.error(`Error executing function ${funcName}:`, error);
+      }
+    } else {
+      console.error(`${funcName} is not a function in advanceState`);
+    }
+  }
 
 
 }
@@ -708,6 +720,7 @@ var advanceState = {
   "getRoomId": getRoomId,
   "seePeopleInRoom": peopleInRoom,
   "getRoomTaskState": getRoomTaskState,
+  "getRole": getRole,
   "endVotesAndDiscussion": endVotesAndDiscussion,
   "test": bugTest
 

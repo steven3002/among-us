@@ -61,7 +61,7 @@ class Player {
             console.log(`${this.name} moved to ${room.name}`)
             return;
         }
-        notice(`you currrently can not leave ${this.currentRoom}`)
+        report(`you currrently can not leave ${this.currentRoom}`)
         console.log(`you currrently can not leave ${this.currentRoom}`)
 
     }
@@ -126,7 +126,7 @@ class Player {
         console.log(`this is the length of the current emergencyMeetingsLeft: ${this.emergencyMeetingsLeft} `)
         if (this.emergencyMeetingsLeft > 0 && this.isAlive) {
             this.emergencyMeetingsLeft -= 1;
-            console.log(`this is the length of the current emergencyMeetingsLeft: ${this.emergencyMeetingsLeft} `)
+            notice(`this is the length of your current emergencyMeetingsLeft: ${this.emergencyMeetingsLeft} `)
             game.startEmergencyMeeting(this);
         } else {
             console.log(`${this.name} cannot call an emergency meeting.`)

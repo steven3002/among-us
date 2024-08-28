@@ -73,6 +73,7 @@ class Room {
 
         this.playersInRoom.forEach(p => {
             if (p !== player) {
+
                 notice(`${player.name} has entered the ${this.name}.`);
 
 
