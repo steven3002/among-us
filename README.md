@@ -5,7 +5,7 @@ This is a simple version of the **Among Us** game, developed using the **Cartesi
 
 ## 🎮 How to Play
 
-1. **Create a Room:** Start by creating a room and wait for at least 2 players to join.
+1. **Create a Room:** Start by creating a room, share your room ID (private, only you and the people in the room can see it) and wait for at least 2 players to join.
 2. **Host Responsibilities:** The host should start the game and will be the admin responsible for managing vote deadlines and the game state.
 3. **Role Assignment:** Roles are assigned randomly:
    - The number of imposters is determined by the number of players:
