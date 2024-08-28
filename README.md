@@ -217,7 +217,7 @@ the following are the methods:...
 
 ```
 
--`getRole`: get your current role. ie (imposter or crewmate);
+- `getRole`: get your current role. ie (imposter or crewmate);
 ```javascript
 {"request": null}
 
