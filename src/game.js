@@ -9,45 +9,9 @@ const Reactor = require('./rooms/reactor');
 const Security = require('./rooms/security');
 const Chat = require('./chat');
 const { ethers } = require("ethers");
+const { str2hex, report, notice } = require('./utils');
 
 const rollup_server = process.env.ROLLUP_HTTP_SERVER_URL;
-
-function str2hex(payload) {
-    return ethers.hexlify(ethers.toUtf8Bytes(payload));
-}
-
-async function report(payload) {
-    let data = payload;
-    if (payload === null || payload === undefined) {
-        data = "null"
-    }
-
-    const report_req = await fetch(rollup_server + "/report", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ payload: str2hex(data) }),
-    });
-    return;
-}
-
-
-async function notice(payload) {
-    let data = payload;
-    if (payload === null || payload === undefined) {
-        data = "null"
-    }
-    const notice_req = await fetch(rollup_server + "/notice", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ payload: str2hex(data) }),
-    });
-
-    return;
-}
 
 class Game {
     constructor(roomId, hostName) {
